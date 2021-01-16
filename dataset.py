@@ -26,7 +26,7 @@ def users_info_save(info):
 def add_user(cap, cascade):
     user_id = input("Идентификатор пользователя: ")
     user_name = input("Имя пользователя: ")
-    input("Медленно покрутите головой в течение 4 секунд")
+    input("Сейчас запустится камера. Медленно покрутите головой в течение 4 секунд. Нажмите Enter по готовности")
     count = 10
     skip = 10  # Skip some frames to avoid duplicates
     while True:

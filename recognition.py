@@ -18,24 +18,26 @@ def start(cap, cascade):
         draw = ImageDraw.Draw(pil_im)
         # Choose a font
         font = ImageFont.truetype("Roboto-Regular.ttf", 50)
+        fontConf = ImageFont.truetype("Roboto-Regular.ttf", 25)
 
         for (x, y, w, h) in faces:
             id, confidence = recognizer.predict(gray[y:y + h, x:x + w])
 
             # If confidence is less them 100 ==> "0" : perfect match
-            if confidence < 100:
+            if confidence > 100:
+                confidence = 0
+            if confidence > 60:
                 name = users_info.get(str(id))
-                confidence = "  {0}%".format(round(100 - confidence))
+                confidence = "  {0}%".format(round(confidence))
             else:
                 name = "Неизвестно"
-                confidence = "  {0}%".format(round(100 - confidence))
+                confidence = "  {0}%".format(round(confidence))
 
             # Draw the text
             draw.rectangle([(x, y), (x + w, y + h)], outline="green", width=2)
             draw.text((x + 5, y - 5), str(name), font=font)
+            draw.text((x + 5, y + h - 5), str(confidence), font=font, fill=(255, 0, 0))
 
-            cv2.putText(img, str(confidence), (x + 5, y + h - 5),
-                        cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 1)
         cv2.imshow('camera', np.array(pil_im))
         k = cv2.waitKey(10) & 0xff  # Press 'ESC' for exiting video
         if k == 27:
