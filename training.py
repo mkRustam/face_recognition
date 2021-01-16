@@ -32,10 +32,10 @@ def getImagesAndLabels(path):
 
 def get_model():
     if os.path.exists("trainer/trainer.yml"):
-        print("Loading model...")
+        print("Загрузка модели...")
         recognizer.read('trainer/trainer.yml')
     else:
-        print("Training model...")
+        print("Тренировка модели...")
         faces, ids = getImagesAndLabels(path)
         recognizer.train(faces, np.array(ids))
 
@@ -45,5 +45,5 @@ def get_model():
         recognizer.write('trainer/trainer.yml')  # recognizer.save() worked on Mac, but not on Pi
 
         # Print the numer of faces trained and end program
-        print("\n [INFO] {0} faces trained. Exiting Program".format(len(np.unique(ids))))
+        print("\n [INFO] Обучение прошло на {0} пользователях".format(len(np.unique(ids))))
     return recognizer

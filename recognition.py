@@ -23,7 +23,7 @@ def start(cap, cascade):
                 print(name)
                 confidence = "  {0}%".format(round(100 - confidence))
             else:
-                name = "unknown"
+                name = "Неизвестно"
                 confidence = "  {0}%".format(round(100 - confidence))
 
             cv2.putText(img, str(name), (x + 5, y - 5),

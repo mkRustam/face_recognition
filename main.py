@@ -11,7 +11,7 @@ cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc('M', 'J', 'P', 'G'))
 
 
 def start():
-    action = input('[1]: Add user\n[2]: Run\n')
+    action = input('[1]: Добавить пользователя\n[2]: Запустить\n')
     if action == '1':
         dataset.add_user(cap, faceCascade)
     if action == '2':

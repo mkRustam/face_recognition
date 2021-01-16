@@ -21,9 +21,9 @@ def users_info_save(info):
 
 # Save each 5th frame as sample
 def add_user(cap, cascade):
-    user_id = input("User id: ")
-    user_name = input("User name: ")
-    input("Please rotate your head slowly during 4 sec. Press Enter to start")
+    user_id = input("Идентификатор пользователя: ")
+    user_name = input("Имя пользователя: ")
+    input("Медленно покрутите головой в течение 4 секунд")
     count = 10
     skip = 10  # Skip some frames to avoid duplicates
     while True:
