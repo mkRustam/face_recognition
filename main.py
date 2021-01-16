@@ -17,5 +17,8 @@ def start():
     if action == '2':
         recognition.start(cap, faceCascade)
 
+    start()
+
+
 if __name__ == '__main__':
     start()

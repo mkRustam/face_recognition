@@ -5,7 +5,10 @@ import os
 
 
 def users_info_load():
-    if os.path.exists("info/"):
+    if not os.path.exists("info/"):
+        os.mkdir("info")
+
+    if os.path.exists("info/users.pickle"):
         with open('info/users.pickle', 'rb') as f:
             return pickle.load(f)
     else:
@@ -49,7 +52,6 @@ def add_user(cap, cascade):
             break
 
     # When everything done, release the capture
-    cap.release()
     cv2.destroyAllWindows()
 
     users_info = users_info_load()
